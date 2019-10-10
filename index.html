@@ -10,14 +10,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <style>
         header {
+            font-family: 'Oswald', sans-serif;
             margin-left: 20px;
             color: white;
             margin-bottom: 5vh;
         }
 
         .large-font {
+            font-family: 'Oswald', sans-serif;
             font-size: 50pt;
             color: white;
             margin-left: 3vw;
@@ -143,28 +146,28 @@
             var input2doApe = document.getElementById('input2doApe');
             var usrAgree = document.getElementById('usrAgree');
             var dataForm = document.getElementById('dataForm');
-            var inputNameValue='';
-            var input1erApeValue='';
-            var input2doApeValue='';
-            
+            var inputNameValue = '';
+            var input1erApeValue = '';
+            var input2doApeValue = '';
+
             console.log(inputName);
             //agregamos listeners para moitorear lo que un usuario tipea y asi poder cambiar de caracteres
             inputName.addEventListener("input", function (e) {
-                inputNameValue+=e.data;
+                inputNameValue += e.data;
                 let charReplaced = replaceChars(e.data);
                 let inputValue = inputName.value.slice(0, inputName.value.length - 1);
                 inputName.value = inputValue + charReplaced;
             });
 
             input1erApe.addEventListener("input", function (e) {
-                input1erApeValue+=e.data;
+                input1erApeValue += e.data;
                 let charReplaced = replaceChars(e.data);
                 let inputValue = input1erApe.value.slice(0, input1erApe.value.length - 1);
                 input1erApe.value = inputValue + charReplaced;
             });
 
             input2doApe.addEventListener("input", function (e) {
-                input2doApeValue+=e.data;
+                input2doApeValue += e.data;
                 let charReplaced = replaceChars(e.data);
                 let inputValue = input2doApe.value.slice(0, input2doApe.value.length - 1);
                 input2doApe.value = inputValue + charReplaced;
