@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exámen Práctico Eximagen</title>
+    <!-- necesario para usar bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        header {
+            margin-left: 20px;
+            color: white;
+            margin-bottom: 5vh;
+        }
+
+        .large-font {
+            font-size: 50pt;
+            color: white;
+            margin-left: 3vw;
+            margin-bottom: 2vh;
+        }
+
+        .small-font {
+            font-size: 15pt;
+            color: rgb(187, 184, 184);
+            margin-left: 3vw;
+        }
+
+        .backg-up {
+            position: absolute;
+            height: 65%;
+            width: 100%;
+            background: black;
+            z-index: -1;
+        }
+
+        .form-box {
+            background-color: white;
+            position: relative;
+            padding: 20px;
+            left: 3vw;
+            ;
+            top: 3vh;
+            width: 90%;
+            height: 100%;
+        }
+
+        .form-title {
+            text-align: center;
+            color: #da4343;
+            font-size: 20pt;
+        }
+
+        input {
+            margin-bottom: 2vh;
+        }
+
+        footer {
+            align-self: flex-end;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="backg-up">&nbsp</div>
+    <div class="row">
+        <div class="col">
+            <header>
+                <h5>INDUSTRIAL</h5>
+            </header>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12-md-12-lg-6">
+            <div class="row">
+                <div class="col-sm-12-md-12-lg-6">
+                    <span class="large-font">DON'T MAKE ME ZOOM</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12-md-12-lg-6">
+                    <span class="small-font">7 reasons industrials and B2B nedds responsive websites</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-12-md-12-lg-6 mx-auto">
+            <div class="form-box">
+                <center>
+                    <span class="form-title">Complete the form to get your Free Guide</span>
+                </center>
+                <form action="" id="dataForm">
+                    <div class="form-group">
+                        <label for="inputNombre">Nombre</label>
+                        <input type="text" id="inputNombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="input1erApe">Primer apellido</label>
+                        <input type="text" id="input1erApe" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="input2doApe">Segundo Apellido</label>
+                        <input type="text" id="input2doApe" class="form-control">
+                    </div>
+                    <div class="form-check">
+                        <label for="usrAgree" class="form-check-label">
+                            <input type="checkbox" id="usrAgree" class="form-check-inline">
+                            Guardar estos datos en nuestra base de datos
+                        </label>
+                    </div>
+                    <center>
+                        <button type="submit" class="btn btn-danger">DOWNLOAD YOUR GUIDE</button>
+                    </center>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-content-end">
+        <div class="col ">
+            <footer>
+                <center>
+                    Realizado por: Javier Ponce <br>
+                    Fecha: 9/10/2019 <br>
+                    Para: Prueba técnica en eximagen <br>
+                </center>
+            </footer>
+        </div>
+    </div>
+    <!-- script de la pagina -->
+    <script>
+        window.onload = function () {
+            //obtenemos los elementos del dom que queremos observar
+            var inputName = document.getElementById('inputNombre');
+            var input1erApe = document.getElementById('input1erApe');
+            var input2doApe = document.getElementById('input2doApe');
+            var usrAgree = document.getElementById('usrAgree');
+            var dataForm = document.getElementById('dataForm');
+            var inputNameValue='';
+            var input1erApeValue='';
+            var input2doApeValue='';
+            
+            console.log(inputName);
+            //agregamos listeners para moitorear lo que un usuario tipea y asi poder cambiar de caracteres
+            inputName.addEventListener("input", function (e) {
+                inputNameValue+=e.data;
+                let charReplaced = replaceChars(e.data);
+                let inputValue = inputName.value.slice(0, inputName.value.length - 1);
+                inputName.value = inputValue + charReplaced;
+            });
+
+            input1erApe.addEventListener("input", function (e) {
+                input1erApeValue+=e.data;
+                let charReplaced = replaceChars(e.data);
+                let inputValue = input1erApe.value.slice(0, input1erApe.value.length - 1);
+                input1erApe.value = inputValue + charReplaced;
+            });
+
+            input2doApe.addEventListener("input", function (e) {
+                input2doApeValue+=e.data;
+                let charReplaced = replaceChars(e.data);
+                let inputValue = input2doApe.value.slice(0, input2doApe.value.length - 1);
+                input2doApe.value = inputValue + charReplaced;
+            });
+
+            //metodo que regresa #, % o el mismo parametro dependiendo del valor del parametro
+            function replaceChars(char) {
+                let arrayChars = ['ñ', 'Ñ', 'á', 'Á', 'é', 'É', 'í', 'Í', 'ó', 'Ó', 'ú', 'Ú'];
+                for (let i = 0; i < arrayChars.length; i++) {
+                    if (char === arrayChars[i]) {
+                        if (char == 'ñ' || char == 'Ñ') return '#';
+                        else return '%';
+                    }
+                }
+                return char;
+            };
+
+            //listener para poder juntar los datos del formulario en un JSON
+            //para despues mandarlo al server
+            dataForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                let data = {
+                    nombre: inputNameValue,
+                    apellido_paterno: input1erApeValue,
+                    apellido_materno: input2doApeValue,
+                    permiso: usrAgree.checked
+                }
+                basicAjax(data);
+            });
+            function basicAjax(data) {
+                let url = 'https://postman-echo.com/post';
+                $.ajax({
+                    url: url,
+                    data: data,
+                    type: 'POST',
+                    contentType: "json",
+                    crossDomain: true,
+                    dataType: 'json',
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    success: function (respuesta) {
+                        showAlert("Respuesta: " + respuesta);
+                    },
+                    error: function (err) {
+                        console.log("error: ", err);
+                        showAlert("algo salió mal, intentale más tarde!");
+                    }
+                });
+
+            }
+
+            function showAlert(message) {
+                alert(message);
+            }
+        }
+    </script>
+    <!-- necesario para usar bootstrap -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
